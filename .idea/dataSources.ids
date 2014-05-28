@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Rails domino_stat: development" uuid="de689aef-d542-473c-a84d-aadb8515bf8b">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails domino_stat: test" uuid="0f114dba-c8ab-4f13-b83a-d4ae973f0a5f">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails domino_stat: production" uuid="d2b995a1-ec1a-4c4e-8cff-387f37a2be74">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>
