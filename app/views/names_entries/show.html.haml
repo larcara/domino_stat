@@ -1,0 +1,48 @@
+%p#notice= notice
+
+%p
+  %b Server:
+  = @names_entry.server_id
+%p
+  %b Cn:
+  = @names_entry.cn
+%p
+  %b Lastname:
+  = @names_entry.lastname
+%p
+  %b Firstname:
+  = @names_entry.firstname
+%p
+  %b Mailserver:
+  = @names_entry.mailserver
+%p
+  %b Email:
+  = @names_entry.email
+%p
+  %b Level0:
+  = @names_entry.level0
+%p
+  %b Level1:
+  = @names_entry.level1
+%p
+  %b Level2:
+  = @names_entry.level2
+%p
+  %b Level3:
+  = @names_entry.level3
+%p
+  %b Level4:
+  = @names_entry.level4
+%p
+  %b Uid:
+  = @names_entry.uid
+%p
+  %b Displayname:
+  = @names_entry.displayname
+%p
+  %b Status:
+  = @names_entry.status
+
+= link_to 'Edit', edit_names_entry_path(@names_entry)
+\|
+= link_to 'Back', names_entries_path

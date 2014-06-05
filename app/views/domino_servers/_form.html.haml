@@ -1,0 +1,22 @@
+= form_for @domino_server do |f|
+  - if @domino_server.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@domino_server.errors.count, "error")} prohibited this domino_server from being saved:"
+      %ul
+        - @domino_server.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :ip
+    = f.text_field :ip
+  .field
+    = f.label :ldap_port
+    = f.text_field :ldap_port
+  .field
+    = f.label :ldap_ssl
+    = f.check_box :ldap_ssl
+  .actions
+    = f.submit 'Save'

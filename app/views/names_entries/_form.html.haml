@@ -1,0 +1,52 @@
+= form_for @names_entry do |f|
+  - if @names_entry.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@names_entry.errors.count, "error")} prohibited this names_entry from being saved:"
+      %ul
+        - @names_entry.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :server_id
+    = f.text_field :server_id
+  .field
+    = f.label :cn
+    = f.text_field :cn
+  .field
+    = f.label :lastname
+    = f.text_field :lastname
+  .field
+    = f.label :firstname
+    = f.text_field :firstname
+  .field
+    = f.label :mailserver
+    = f.text_field :mailserver
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :level0
+    = f.text_field :level0
+  .field
+    = f.label :level1
+    = f.text_field :level1
+  .field
+    = f.label :level2
+    = f.text_field :level2
+  .field
+    = f.label :level3
+    = f.text_field :level3
+  .field
+    = f.label :level4
+    = f.text_field :level4
+  .field
+    = f.label :uid
+    = f.text_field :uid
+  .field
+    = f.label :displayname
+    = f.text_field :displayname
+  .field
+    = f.label :status
+    = f.text_field :status
+  .actions
+    = f.submit 'Save'

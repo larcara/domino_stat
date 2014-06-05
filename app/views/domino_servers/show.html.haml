@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @domino_server.name
+%p
+  %b Ip:
+  = @domino_server.ip
+%p
+  %b Ldap port:
+  = @domino_server.ldap_port
+%p
+  %b Ldap ssl:
+  = @domino_server.ldap_ssl
+
+= link_to 'Edit', edit_domino_server_path(@domino_server)
+\|
+= link_to 'Back', domino_servers_path

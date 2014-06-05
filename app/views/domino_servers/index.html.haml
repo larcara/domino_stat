@@ -1,0 +1,25 @@
+%h1 Domino Servers
+
+%table.table.table_bordered.table_condensed
+  %tr
+    %th Name
+    %th Ip
+    %th Ldap port
+    %th Ldap ssl
+    %th
+    %th
+    %th
+
+  - @domino_servers.each do |domino_server|
+    %tr
+      %td= domino_server.name
+      %td= domino_server.ip
+      %td= domino_server.ldap_port
+      %td= domino_server.ldap_ssl
+      %td= link_to 'Show', domino_server
+      %td= link_to 'Edit', edit_domino_server_path(domino_server)
+      %td= link_to 'Destroy', domino_server, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Domino server', new_domino_server_path

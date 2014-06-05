@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @domino_server.name %>
+</p>
+
+<p>
+  <strong>Ip:</strong>
+  <%= @domino_server.ip %>
+</p>
+
+<p>
+  <strong>Ldap port:</strong>
+  <%= @domino_server.ldap_port %>
+</p>
+
+<%= link_to 'Edit', edit_domino_server_path(@domino_server) %> |
+<%= link_to 'Back', domino_servers_path %>

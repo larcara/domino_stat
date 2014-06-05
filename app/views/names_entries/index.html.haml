@@ -1,0 +1,45 @@
+%h1 Listing names_entries
+
+%table
+  %tr
+    %th Server
+    %th Cn
+    %th Lastname
+    %th Firstname
+    %th Mailserver
+    %th Email
+    %th Level0
+    %th Level1
+    %th Level2
+    %th Level3
+    %th Level4
+    %th Uid
+    %th Displayname
+    %th Status
+    %th
+    %th
+    %th
+
+  - @names_entries.each do |names_entry|
+    %tr
+      %td= names_entry.server_id
+      %td= names_entry.cn
+      %td= names_entry.lastname
+      %td= names_entry.firstname
+      %td= names_entry.mailserver
+      %td= names_entry.email
+      %td= names_entry.level0
+      %td= names_entry.level1
+      %td= names_entry.level2
+      %td= names_entry.level3
+      %td= names_entry.level4
+      %td= names_entry.uid
+      %td= names_entry.displayname
+      %td= names_entry.status
+      %td= link_to 'Show', names_entry
+      %td= link_to 'Edit', edit_names_entry_path(names_entry)
+      %td= link_to 'Destroy', names_entry, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Names entry', new_names_entry_path
