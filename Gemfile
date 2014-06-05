@@ -24,7 +24,8 @@ gem 'bootstrap-sass'
 gem 'haml'
 gem 'haml-rails'
 gem 'rails_admin'
-gem 'ledermann-rails-settings'
+gem 'ledermann-rails-settings' #used for server attributes
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 #gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

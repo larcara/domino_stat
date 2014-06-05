@@ -1,25 +1,42 @@
-%h1 Domino Servers
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+        Domino Servers
+      / /.panel-heading
+      .panel-body
+        .table-responsive
+          %table#dataTables-example.table.table-striped.table-bordered.table-hover
+            %thead
+              %tr
+                %th Server Name
+                %th IP Address
+                %th LDAP Address
+                %th TreeBase
+                %th Filter
+                %th User
+                %th Action
 
-%table.table.table_bordered.table_condensed
-  %tr
-    %th Name
-    %th Ip
-    %th Ldap port
-    %th Ldap ssl
-    %th
-    %th
-    %th
+            %tbody
+              - @domino_servers.each do |domino_server|
+                %tr.odd.gradeX
+                  %td=domino_server.name
+                  %td=domino_server.ip
+                  %td="#{domino_server.settings(:ldap).hostname}:#{domino_server.settings(:ldap).port}"
+                  %td="#{domino_server.settings(:ldap).treebase}"
+                  %td="#{domino_server.settings(:ldap).filter}"
+                  %td="#{domino_server.settings(:ldap).username}"
+                  %td
+                    =link_to domino_server, class: "", title: "Show" do
+                      %i.fa.fa-search.fa-fw
+                    =link_to edit_domino_server_path(domino_server), class: "", title: "Edit" do
+                      %i.fa.fa-pencil.fa-fw
+                    =link_to domino_server, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "" , title: "Destroy" do
+                      %i.fa.fa-trash-o.fa-fw
+        / /.table-responsive
+/ Page-Level Demo Scripts - Tables - Use for reference
+:javascript
+  $(document).ready(function() {
+      $('#dataTables-example').dataTable();
+  });
 
-  - @domino_servers.each do |domino_server|
-    %tr
-      %td= domino_server.name
-      %td= domino_server.ip
-      %td= domino_server.ldap_port
-      %td= domino_server.ldap_ssl
-      %td= link_to 'Show', domino_server
-      %td= link_to 'Edit', edit_domino_server_path(domino_server)
-      %td= link_to 'Destroy', domino_server, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Domino server', new_domino_server_path

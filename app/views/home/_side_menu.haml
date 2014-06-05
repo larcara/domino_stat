@@ -1,5 +1,5 @@
 %li
-  %a{:href => "index.html"}
+  =link_to root_path do
     %i.fa.fa-dashboard.fa-fw
     Dashboard
 %li
@@ -14,11 +14,22 @@
       %a{:href => "morris.html"} Morris.js Charts
   / /.nav-second-level
 %li
-  %a{:href => "tables.html"}
+  %a{:href => "#"}
+    %i.fa.fa-bar-chart-o.fa-fw
+    Domino Servers
+    %span.fa.arrow
+  %ul.nav.nav-second-level
+    %li
+      =link_to "List", domino_servers_path
+    %li
+      =link_to "Add New", new_domino_server_path
+  / /.nav-second-level
+%li
+  %a{:href => "/tables.html"}
     %i.fa.fa-table.fa-fw
     Tables
 %li
-  %a{:href => "forms.html"}
+  %a{:href => "/forms.html"}
     %i.fa.fa-edit.fa-fw
     Forms
 %li
@@ -28,15 +39,15 @@
     %span.fa.arrow
   %ul.nav.nav-second-level
     %li
-      %a{:href => "panels_wells.html"} Panels and Wells
+      %a{:href => "/panels_wells.html"} Panels and Wells
     %li
-      %a{:href => "buttons.html"} Buttons
+      %a{:href => "/buttons.html"} Buttons
     %li
-      %a{:href => "notifications.html"} Notifications
+      %a{:href => "/notifications.html"} Notifications
     %li
-      %a{:href => "typography.html"} Typography
+      %a{:href => "/typography.html"} Typography
     %li
-      %a{:href => "grid.html"} Grid
+      %a{:href => "/grid.html"} Grid
   / /.nav-second-level
 %li
   %a{:href => "#"}

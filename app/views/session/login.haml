@@ -5,10 +5,12 @@
         .panel-heading
           %h3.panel-title Please Sign In
         .panel-body
-          %form{:role => "form"}
+          =form_tag(url_for(:action => 'create') , class: "form")     do
             %fieldset
               .form-group
-                %input.form-control{:autofocus => "", :name => "email", :placeholder => "E-mail", :type => "email"}
+                =select_tag :server, options_for_select(@servers), :placeholder => "", class: "form-control"
+              .form-group
+                %input.form-control{:autofocus => "", :name => "username_or_email", :placeholder => "E-mail", :type => "email"}
               .form-group
                 %input.form-control{:name => "password", :placeholder => "Password", :type => "password", :value => ""}
               .checkbox
@@ -16,4 +18,4 @@
                   %input{:name => "remember", :type => "checkbox", :value => "Remember Me"}
                     Remember Me
               / Change this to a button or input when using this as a form
-              %a.btn.btn-lg.btn-success.btn-block{:href => "index.haml"} Login
+              %button.btn.btn-lg.btn-success.btn-block Login

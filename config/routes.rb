@@ -14,18 +14,18 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'home#index'
   
-  get 'home/flot' => 'home#flot'
-  get 'home/morris' => 'home#morris'
-  get 'home/tables' => 'home#tables'
-  get 'home/forms' => 'home#forms'
+  get 'flot' => 'home#flot'
+  get 'morris' => 'home#morris'
+  get 'tables' => 'home#tables'
+  get 'forms' => 'home#forms'
 
-  get 'home/panels_wells' => 'home#panels_wells'
-  get 'home/buttons' => 'home#buttons'
-  get 'home/notifications' => 'home#notifications'
-  get 'home/typography' => 'home#typography'
-  get 'home/grid' => 'home#grid'
-  get 'home/blank' => 'home#blank'
-  get 'home/login' => 'home#login'
+  get 'panels_wells' => 'home#panels_wells'
+  get 'buttons' => 'home#buttons'
+  get 'notifications' => 'home#notifications'
+  get 'typography' => 'home#typography'
+  get 'grid' => 'home#grid'
+  get 'blank' => 'home#blank'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -6,7 +6,7 @@ class SessionController < ApplicationController
     @servers=dd.map do |x|
       [x.name, x.id]
     end
-    render layout: "login"
+    render "login", layout: "login"
   end
 
   def create
@@ -14,7 +14,7 @@ class SessionController < ApplicationController
 
     session[:user_name]=nil
     ldap=Net::LDAP.new(host: server.ip, port: server.ldap_port,
-                       auth: {:method=>:simple, username: params[:username_or_email], password: params[:login_password]})
+                       auth: {:method=>:simple, username: params[:username_or_email], password: params[:password]})
     ldap.encryption(:simple_tls) if server.ldap_port!="389"
 
     begin

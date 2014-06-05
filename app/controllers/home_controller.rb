@@ -450,14 +450,13 @@ class HomeController < ApplicationController
 
 
     @result=result
+  end
   def blank
 
   end
-  def index
 
-  end
-  def login
-    render layout: "login"
+  def notifications
+
   end
   def flot
 

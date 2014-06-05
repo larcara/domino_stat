@@ -1,22 +1,45 @@
-= form_for @domino_server do |f|
-  - if @domino_server.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@domino_server.errors.count, "error")} prohibited this domino_server from being saved:"
-      %ul
-        - @domino_server.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :ip
-    = f.text_field :ip
-  .field
-    = f.label :ldap_port
-    = f.text_field :ldap_port
-  .field
-    = f.label :ldap_ssl
-    = f.check_box :ldap_ssl
-  .actions
-    = f.submit 'Save'
+- if @domino_server.errors.any?
+  .row
+  .col-lg-6
+    .panel.panel-default
+      .panel-heading
+        Errors
+      / /.panel-heading
+      .panel-body
+        .alert.alert-success
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          = succeed "." do
+            %a.alert-link{:href => "#"} Alert Link
+        .alert.alert-info
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          = succeed "." do
+            %a.alert-link{:href => "#"} Alert Link
+        .alert.alert-warning
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          = succeed "." do
+            %a.alert-link{:href => "#"} Alert Link
+        .alert.alert-danger
+          = "#{pluralize(@domino_server.errors.count, "error")} prohibited this domino_server from being saved:"
+          %ul
+            - @domino_server.errors.full_messages.each do |msg|
+              %li= msg
+          = succeed "." do
+            %a.alert-link{:href => "#"} Alert Link
+      / .panel-body
+    / /.panel
+  / /.col-lg-6
+.panel-body
+  .row
+    .col-lg-6
+      = form_for @domino_server, role: "form" do |f|
+        .form-group
+          = f.label :name
+          = f.text_field :name , class: "form-control"
+          %p.help-block Mnemonical server name.
+        .form-group
+          = f.label :ip
+          = f.text_field :ip, class: "form-control", :placeholder => "IP or Hostname of server"
+//%td="#{domino_server.settings(:ldap).hostname}:#{domino_server.settings(:ldap).port}"
+//%td="#{domino_server.settings(:ldap).treebase}"
+//%td="#{domino_server.settings(:ldap).filter}"
+//%td="#{domino_server.settings(:ldap).username}"
