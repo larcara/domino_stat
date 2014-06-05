@@ -23,6 +23,7 @@ gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
 gem 'haml'
 gem 'haml-rails'
+gem 'rails_admin'
 gem 'ledermann-rails-settings'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 #gem 'turbolinks'

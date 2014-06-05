@@ -27,7 +27,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    aescrypt (1.0.0)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7-x86-mingw32)
     bootstrap-sass (3.1.1.0)
@@ -162,7 +161,6 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  aescrypt
   bcrypt (~> 3.1.7)
   bootstrap-sass
   coffee-rails (~> 4.0.0)
