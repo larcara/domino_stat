@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+DominoServer.create(name: "postaweb" , ip: "postaweb.camera.it" , ldap_port: "389", ldap_ssl: false)

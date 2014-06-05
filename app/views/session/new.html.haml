@@ -1,0 +1,9 @@
+
+=form_tag(url_for(:action => 'create') , class: "form form-signin") do
+  %fieldset
+    #legend
+      %h2.text-center Login
+    =select_tag :server, options_for_select(@servers), :placeholder => "", class: "form-control"
+    %input#username.form-control{:name => "username_or_email", :placeholder => "email", :type => "text", required: true, autofocus: true}
+    %input#password.form-control{:name => "login_password", :placeholder => "password", :type => "password", required: true}
+    %button.btn.btn-lg.btn-primary.btn-block Login
