@@ -13,7 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require sb-admin
-// require turbolinks
+//= require sb-admin/jquery.metisMenu
+//= require sb-admin/jquery.dataTables
+//= require sb-admin/dataTables.bootstrap
+//= require sb-admin/jquery.flot
+//= require sb-admin/jquery.flot.pie
+//= require sb-admin/jquery.flot.resize
+//= require sb-admin/jquery.flot.tooltip.min
+//= require sb-admin/raphael-2.1.0.min
+//= require sb-admin/morris
 
-//= require_tree .
+//= require sb-admin/sb-admin
+

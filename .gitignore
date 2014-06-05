@@ -10,6 +10,11 @@
 /.idea/*
 # Ignore bundler config.
 /.bundle
+=======
+# Ignore bundler config.
+/.bundle
+/.idea
+>>>>>>> admin/master
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
