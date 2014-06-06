@@ -69,6 +69,6 @@ class DominoServersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def domino_server_params
-      params.require(:domino_server).permit(:name, :ip, :ldap_port, :ldap_ssl)
+      params.require(:domino_server).permit(:name, :ip, :ldap_treebase, :ldap_hostname, :ldap_port, :ldap_auth_method, :ldap_filter, :ldap_username, :ldap_new_password)
     end
 end

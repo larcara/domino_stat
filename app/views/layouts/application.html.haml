@@ -26,8 +26,22 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.navbar-brand{:href => "index.html"} SB Admin v2.0
+          =link_to "#{Rails.application.engine_name}", root_url, class: "navbar-brand"
         / /.navbar-header
+        - if flash[:notice]
+          .col-lg-6
+            .alert.alert-success.alert-dismissable
+              %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+              = flash[:notice]
+              = succeed "." do
+                %a.alert-link{:href => "#"} Alert Link
+        - if flash[:alert]
+          .col-lg-6
+            .alert.alert-danger.alert-dismissable
+              %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+              = flash[:notice]
+              = succeed "." do
+                %a.alert-link{:href => "#"} Alert Link
         %ul.nav.navbar-top-links.navbar-right
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
