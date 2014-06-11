@@ -22,10 +22,10 @@
                 %tr.odd.gradeX
                   %td=domino_server.name
                   %td=domino_server.ip
-                  %td="#{domino_server.settings(:ldap).hostname}:#{domino_server.settings(:ldap).port}"
-                  %td="#{domino_server.settings(:ldap).treebase}"
-                  %td="#{domino_server.settings(:ldap).filter}"
-                  %td="#{domino_server.settings(:ldap).username}"
+                  %td="#{domino_server.ldap_hostname}:#{domino_server.ldap_port}"
+                  %td="#{domino_server.ldap_treebase}"
+                  %td="#{domino_server.ldap_filter}"
+                  %td="#{domino_server.ldap_username}"
                   %td
                     =link_to domino_server, class: "", title: "Show" do
                       %i.fa.fa-search.fa-fw

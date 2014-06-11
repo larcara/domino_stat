@@ -11,40 +11,42 @@
 #  updated_at :datetime
 #
 
-class DominoServer < ActiveRecord::Base
+class DominoServer #< ActiveRecord::Base
+  include Mongoid::Document
+  field :name, type: String
+  field :ip, type: String
+  field :ldap_port, type: String
+  field :ldap_ssl, type: String
+  field :ldap_username, type: String
+  field :ldap_password, type: BSON::Binary
+  field :ldap_treebase, type: String
+  field :ldap_hostname, type: String
+  field :ldap_auth_method, type: String
+  field :ldap_filter, type: String
+
 
   has_many :names_entries
 
-  has_settings :class_name => 'DominoServerSettingObject'  do |s|
-    s.key :ldap, :defaults => { username: '', password: '', treebase: 'ou=OrganizationUnit,dc=Domain,C=IT', hostname: '127.0.0.7', port: "389", auth_method: "simple", filter: "(mail=*)"}
-    s.key :calendar,  :defaults => { :scope => 'company'}
+
+  #todo transform to has_password :password_name_field, :key
+  def ldap_password
+    puts "password is encripted !!"
+    self[:ldap_password]
+  end
+  def decrypted_ldap_password
+    decrypted_value = Encryptor.decrypt(:value => self.ldap_password.data, :key => secret_key)
+    puts "password is decrypted !!"
+    decrypted_value
   end
 
-
-  def self.settings_attr_accessor(*args)
-    args.each do |arg|
-      puts "||||||#{arg.class}"
-      puts "||||||#{arg.inspect}"
-      if arg.is_a?(Hash)
-        arg.each { |k,v| v.each{ |method_name| settings_create_attr_accessor(method_name, k)}}
-      end
-      settings_create_attr_accessor(arg) if arg.is_a?(Symbol)
-      end
+  def ldap_password=(value)
+    encrypted_value = Encryptor.encrypt(:value => value, :key => secret_key) unless value.blank?
+    self[:ldap_password]=BSON::Binary.new(encrypted_value)
   end
-  def self.settings_create_attr_accessor(method_name, group=nil)
-    setting_name= group ? "settings(:#{group})" : "settings"
-    _method_name= group ? "#{group}_#{method_name}" : method_name
-
-    eval "
-        def #{_method_name}
-          self.#{setting_name}.send(:#{method_name})
-        end
-        def #{_method_name}=(value)
-          self.#{setting_name}.send(:#{method_name}=, value)
-        end
-      "
+  private
+  def secret_key
+    "dasd asdas asfdfa fa wereaw fsdaf sdf wedsff weraf"
   end
-  settings_attr_accessor ldap: [:treebase, :hostname, :port, :auth_method, :filter, :username, :password]
 
   def ldap_new_password
 
@@ -54,17 +56,17 @@ class DominoServer < ActiveRecord::Base
   end
 
   def import_contact_from_ldap(options={})#hostname, port, username, password, treebase="O=cameradep,C=IT")
-    username=options[:username] || self.settings(:ldap).username
-    password=options[:password] || self.settings(:ldap).decrypted_password
-    ldap=Net::LDAP.new(host: self.settings(:ldap).hostname,
-                       port: self.settings(:ldap).port,
-                       auth: {:method=> self.settings(:ldap).auth_method.to_sym,
+    username=options[:username] || self.ldap_username
+    password=options[:password] || self.decrypted_ldap_password
+    ldap=Net::LDAP.new(host: self.ldap_hostname,
+                       port: self.ldap_port,
+                       auth: {:method=> self.ldap_auth_method.to_sym,
                        username: username, password: password})
-    ldap.encryption(:simple_tls) if self.settings(:ldap).port!="389"
+    ldap.encryption(:simple_tls) if self.ldap_port!="389"
 
-    filter = Net::LDAP::Filter.construct(self.settings(:ldap).filter)
+    filter = Net::LDAP::Filter.construct(self.ldap_filter)
     found_ids=[]
-    ldap.search(:base => self.settings(:ldap).treebase, :filter => filter) do |entry|
+    ldap.search(:base => self.ldap_treebase, :filter => filter) do |entry|
       attrib={}
       attrib[:cn]=entry[:cn].last
       attrib[:firstname]=entry[:sn].last
