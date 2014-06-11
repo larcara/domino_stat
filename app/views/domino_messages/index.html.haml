@@ -1,0 +1,45 @@
+%h1 Listing domino_messages
+
+%table
+  %tr
+    %th Date
+    %th Time
+    %th Domino server
+    %th Messageid
+    %th Notes message
+    %th Mail from
+    %th Mail to
+    %th Size
+    %th Smtp from
+    %th Mail relay
+    %th Forward by rule
+    %th Message type
+    %th Subject
+    %th Notes
+    %th
+    %th
+    %th
+
+  - @domino_messages.each do |domino_message|
+    %tr
+      %td= domino_message.date
+      %td= domino_message.time
+      %td= domino_message.domino_server_id
+      %td= domino_message.messageid
+      %td= domino_message.notes_message_id
+      %td= domino_message.mail_from
+      %td= domino_message.mail_to
+      %td= domino_message.size
+      %td= domino_message.smtp_from
+      %td= domino_message.mail_relay
+      %td= domino_message.forward_by_rule
+      %td= domino_message.message_type
+      %td= domino_message.subject
+      %td= domino_message.notes
+      %td= link_to 'Show', domino_message
+      %td= link_to 'Edit', edit_domino_message_path(domino_message)
+      %td= link_to 'Destroy', domino_message, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Domino message', new_domino_message_path

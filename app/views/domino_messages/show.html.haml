@@ -1,0 +1,48 @@
+%p#notice= notice
+
+%p
+  %b Date:
+  = @domino_message.date
+%p
+  %b Time:
+  = @domino_message.time
+%p
+  %b Domino server:
+  = @domino_message.domino_server_id
+%p
+  %b Messageid:
+  = @domino_message.messageid
+%p
+  %b Notes message:
+  = @domino_message.notes_message_id
+%p
+  %b Mail from:
+  = @domino_message.mail_from
+%p
+  %b Mail to:
+  = @domino_message.mail_to
+%p
+  %b Size:
+  = @domino_message.size
+%p
+  %b Smtp from:
+  = @domino_message.smtp_from
+%p
+  %b Mail relay:
+  = @domino_message.mail_relay
+%p
+  %b Forward by rule:
+  = @domino_message.forward_by_rule
+%p
+  %b Message type:
+  = @domino_message.message_type
+%p
+  %b Subject:
+  = @domino_message.subject
+%p
+  %b Notes:
+  = @domino_message.notes
+
+= link_to 'Edit', edit_domino_message_path(@domino_message)
+\|
+= link_to 'Back', domino_messages_path

@@ -1,0 +1,1 @@
+json.extract! @domino_message, :id, :date, :time, :domino_server_id, :messageid, :notes_message_id, :mail_from, :mail_to, :size, :smtp_from, :mail_relay, :forward_by_rule, :message_type, :subject, :notes, :created_at, :updated_at

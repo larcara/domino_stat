@@ -1,45 +1,38 @@
-%h1 Listing names_entries
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+        Names Entry
+      / /.panel-heading
+      .panel-body
+        .table-responsive
+          %table#dataTables-example.table.table-striped.table-bordered.table-hover
+            %thead
+              %tr
+                %th Server
+                %th Level0
+                %th Email
+                %th Displayname
+                %th Action
 
-%table
-  %tr
-    %th Server
-    %th Cn
-    %th Lastname
-    %th Firstname
-    %th Mailserver
-    %th Email
-    %th Level0
-    %th Level1
-    %th Level2
-    %th Level3
-    %th Level4
-    %th Uid
-    %th Displayname
-    %th Status
-    %th
-    %th
-    %th
+            %tbody
+              - @names_entries.each do |names_entry|
+                %tr.odd.gradeX
+                  %td= names_entry.domino_server_id
+                  %td= names_entry.level0
+                  %td= names_entry.email
+                  %td= names_entry.displayname
+                  %td
+                    =link_to names_entry, class: "", title: "Show" do
+                      %i.fa.fa-search.fa-fw
+                    =link_to edit_names_entry_path(names_entry), class: "", title: "Edit" do
+                      %i.fa.fa-pencil.fa-fw
+                    =link_to names_entry, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "" , title: "Destroy" do
+                      %i.fa.fa-trash-o.fa-fw
+        / /.table-responsive
+/ Page-Level Demo Scripts - Tables - Use for reference
+:javascript
+  $(document).ready(function() {
+      $('#dataTables-example').dataTable();
+  });
 
-  - @names_entries.each do |names_entry|
-    %tr
-      %td= names_entry.server_id
-      %td= names_entry.cn
-      %td= names_entry.lastname
-      %td= names_entry.firstname
-      %td= names_entry.mailserver
-      %td= names_entry.email
-      %td= names_entry.level0
-      %td= names_entry.level1
-      %td= names_entry.level2
-      %td= names_entry.level3
-      %td= names_entry.level4
-      %td= names_entry.uid
-      %td= names_entry.displayname
-      %td= names_entry.status
-      %td= link_to 'Show', names_entry
-      %td= link_to 'Edit', edit_names_entry_path(names_entry)
-      %td= link_to 'Destroy', names_entry, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Names entry', new_names_entry_path

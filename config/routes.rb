@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :domino_messages
+
   resources :names_entries
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
