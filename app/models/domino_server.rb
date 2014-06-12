@@ -21,21 +21,20 @@ class DominoServer #< ActiveRecord::Base
   field :ldap_password, type: BSON::Binary
   field :ldap_treebase, type: String
   field :ldap_hostname, type: String
-  field :ldap_auth_method, type: String
   field :ldap_filter, type: String
+  field :ssh_user, type: String
+  field :ssh_password, type: BSON::Binary
+
 
 
   has_many :names_entries
+  has_many :domino_messages
 
 
   #todo transform to has_password :password_name_field, :key
-  def ldap_password
-    puts "password is encripted !!"
-    self[:ldap_password]
-  end
-  def decrypted_ldap_password
-    decrypted_value = Encryptor.decrypt(:value => self.ldap_password.data, :key => secret_key)
-    puts "password is decrypted !!"
+
+  def decrypt(field_name)
+    decrypted_value = Encryptor.decrypt(:value => self[field_name].data, :key => secret_key)
     decrypted_value
   end
 
@@ -43,29 +42,27 @@ class DominoServer #< ActiveRecord::Base
     encrypted_value = Encryptor.encrypt(:value => value, :key => secret_key) unless value.blank?
     self[:ldap_password]=BSON::Binary.new(encrypted_value)
   end
-  private
-  def secret_key
-    "dasd asdas asfdfa fa wereaw fsdaf sdf wedsff weraf"
+  def ssh_password=(value)
+    encrypted_value = Encryptor.encrypt(:value => value, :key => secret_key) unless value.blank?
+    self[:ssh_password]=BSON::Binary.new(encrypted_value)
   end
 
-  def ldap_new_password
-
-  end
-  def ldap_new_password=(value)
-    self.settings(:ldap).password=value unless value.blank?
-  end
 
   def import_contact_from_ldap(options={})#hostname, port, username, password, treebase="O=cameradep,C=IT")
     username=options[:username] || self.ldap_username
     password=options[:password] || self.decrypted_ldap_password
     ldap=Net::LDAP.new(host: self.ldap_hostname,
                        port: self.ldap_port,
-                       auth: {:method=> self.ldap_auth_method.to_sym,
+                       auth: {:method=> :simple,
                        username: username, password: password})
     ldap.encryption(:simple_tls) if self.ldap_port!="389"
 
     filter = Net::LDAP::Filter.construct(self.ldap_filter)
     found_ids=[]
+    #MONGO
+    self.names_entries.set(status: "cancelled")
+    #ACTIVE RECORD
+
     ldap.search(:base => self.ldap_treebase, :filter => filter) do |entry|
       attrib={}
       attrib[:cn]=entry[:cn].last
@@ -91,8 +88,15 @@ class DominoServer #< ActiveRecord::Base
       a.attributes= attrib
       a.status="active"
       a.save
-      found_ids << a.id
+
     end
-    self.names_entries.where(["id not in (?)", found_ids]).update_all("status='cancelled'")
+
+
+
   end
+  private
+  def secret_key
+    "dasd asdas asfdfa fa wereaw fsdaf sdf wedsff weraf"
+  end
+
 end

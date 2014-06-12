@@ -61,6 +61,17 @@ class DominoServersController < ApplicationController
     end
   end
 
+  # POST /domino_servers
+  # POST /domino_servers.json
+  def load_names_entry
+    set_domino_server
+    @domino_server.import_contact_from_ldap
+    respond_to do |format|
+      format.html { redirect_to domino_servers_url, notice: 'Names Entry imported.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_domino_server

@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   resources :names_entries
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :domino_servers
+  resources :domino_servers do
+    member do
+      post "load_names_entry"
+    end
+
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,4 +1,3 @@
-= @domino_server.errors.full_messages
 - if @domino_server.errors.any?
   .row
   .col-lg-6
@@ -65,4 +64,4 @@
           = f.label :ldap_password
           = text_field_tag "domino_server[ldap_password]","",class: "form-control", :placeholder => "password" , type: "password"
           %p.help-block password for bindig unser
-        %button.btn.btn-default{:type => "submit"} Submit Button
+        %button.btn.btn-success{:type => "submit"} Save
