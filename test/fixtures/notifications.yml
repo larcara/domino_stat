@@ -1,0 +1,28 @@
+# == Schema Information
+#
+# Table name: notifications
+#
+#  id          :integer          not null, primary key
+#  panel       :string(255)
+#  label       :string(255)
+#  description :string(255)
+#  value       :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  status      :string(255)
+#  level       :integer
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  panel: MyString
+  label: MyString
+  description: MyString
+  value: MyString
+
+two:
+  panel: MyString
+  label: MyString
+  description: MyString
+  value: MyString

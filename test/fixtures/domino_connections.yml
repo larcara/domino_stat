@@ -1,0 +1,32 @@
+# == Schema Information
+#
+# Table name: domino_connections
+#
+#  id               :integer          not null, primary key
+#  domino_server_id :integer
+#  date             :datetime
+#  connection_type  :string(255)
+#  ip               :string(255)
+#  user             :string(255)
+#  action           :string(255)
+#  created_at       :datetime
+#  updated_at       :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  domino_server_id: 1
+  date: 2014-06-13 14:11:52
+  connection_type: MyString
+  ip: MyString
+  user: MyString
+  action: MyString
+
+two:
+  domino_server_id: 1
+  date: 2014-06-13 14:11:52
+  connection_type: MyString
+  ip: MyString
+  user: MyString
+  action: MyString

@@ -2,8 +2,7 @@
 class SessionController < ApplicationController
   before_filter :authenticate_user, :except => [:new, :create]
   def new
-    dd=DominoServer.all
-    @servers=dd.map do |x|
+    @servers=DominoServer.enabled_for_auth.map do |x|
       [x.name, x.id]
     end
     render "login", layout: "login"

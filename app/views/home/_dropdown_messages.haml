@@ -1,26 +1,11 @@
-%li
-  %a{:href => "#"}
-    %div
-      %strong John Smith
-      %span.pull-right.text-muted
-        %em Yesterday
-    %div Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...
-%li.divider
-%li
-  %a{:href => "#"}
-    %div
-      %strong John Smith
-      %span.pull-right.text-muted
-        %em Yesterday
-    %div Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...
-%li.divider
-%li
-  %a{:href => "#"}
-    %div
-      %strong John Smith
-      %span.pull-right.text-muted
-        %em Yesterday
-    %div Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...
+-@messages.each do |n|
+  %li
+    %a{:href => "#"}
+      %div
+        %strong=n.label
+        %span.pull-right.text-muted
+          %em=time_ago_in_words(n.updated_at)
+        %div=n.description
 %li.divider
 %li
   %a.text-center{:href => "#"}

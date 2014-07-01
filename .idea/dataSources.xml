@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2150838690">
+  <component name="DataSourceManagerImpl" format="xml" hash="2449553688">
     <data-source source="LOCAL" name="Rails domino_stat: development" uuid="de689aef-d542-473c-a84d-aadb8515bf8b">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://mailcacti.intra.camera.it:3306/mail_stats2_development</jdbc-url>
+      <user-name>stat_user</user-name>
+      <user-password>dfc9dfcbdfc7dfcfdfd8dfcbdf84dfc4dfc9</user-password>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/mysql-connector-java-5.1.26-bin.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="Rails domino_stat: test" uuid="0f114dba-c8ab-4f13-b83a-d4ae973f0a5f">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://mailcacti.intra.camera.it:3306/mail_stats2_test</jdbc-url>
+      <user-name>stat_user</user-name>
+      <user-password>dfc9dfcbdfc7dfcfdfd8dfcbdf84dfc4dfc9</user-password>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/mysql-connector-java-5.1.26-bin.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="Rails domino_stat: production" uuid="d2b995a1-ec1a-4c4e-8cff-387f37a2be74">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://mailcacti.intra.camera.it:3306/mail_stats2_development</jdbc-url>
+      <user-name>stat_user</user-name>
+      <user-password>dfc9dfcbdfc7dfcfdfd8dfcbdf84dfc4dfc9</user-password>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/mysql-connector-java-5.1.26-bin.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="Rails domino_stat: default" uuid="b8803100-662b-4c7e-88ba-865010ceb779">
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql:domino_stat_development</jdbc-url>
@@ -9,19 +45,29 @@
       <user-password>dfdadfc5dfd9dfdedfcddfd8dfcfdfd9</user-password>
       <libraries />
     </data-source>
-    <data-source source="LOCAL" name="Rails domino_stat: test" uuid="0f114dba-c8ab-4f13-b83a-d4ae973f0a5f">
-      <driver-ref>postgresql</driver-ref>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql:domino_stat_test</jdbc-url>
-      <libraries />
+    <data-source source="LOCAL" name="Rails domino_stat: test_mysql" uuid="a820c127-7dc3-4823-821c-e0252a652739">
+      <driver-ref>mysql</driver-ref>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://mailcacti.intra.camera.it:3306/mail_stats2_test</jdbc-url>
+      <user-name>stat_user</user-name>
+      <user-password>dfc9dfcbdfc7dfcfdfd8dfcbdf84dfc4dfc9</user-password>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/mysql-connector-java-5.1.26-bin.jar</url>
+        </library>
+      </libraries>
     </data-source>
-    <data-source source="LOCAL" name="Rails domino_stat: production" uuid="d2b995a1-ec1a-4c4e-8cff-387f37a2be74">
-      <driver-ref>postgresql</driver-ref>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql:domino_stat_production</jdbc-url>
-      <user-name>domino_stat</user-name>
-      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddfeedfe5dfe7dfe3dfe4dfe5dff5dff9dffedfebdffedff5dfeedfebdffedfebdfe8dfebdff9dfefdff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
-      <libraries />
+    <data-source source="LOCAL" name="Rails domino_stat: mysql" uuid="b7ba47c6-dae9-4ce9-aeaa-5cd4b05d9a4f">
+      <driver-ref>mysql</driver-ref>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/mail_stats2_development</jdbc-url>
+      <user-name>root</user-name>
+      <user-password>dfd8dfc5dfc5dfde</user-password>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/mysql-connector-java-5.1.26-bin.jar</url>
+        </library>
+      </libraries>
     </data-source>
   </component>
 </project>

@@ -4,18 +4,27 @@ Rails.application.routes.draw do
   resources :names_entries
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :domino_servers
+  resources :domino_servers do
+    member do
+      post "load_names_entry"
+      post "tail"
+    end
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-  get "session/new"
+  end
+
+    get "session/new"
   post "session/create"
   delete "session/destroy"
   get "session/destroy"
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root 'home#index'
-  
+  get 'home/locks'
+  get 'home/test_domino_message_data'
+
+
+
   get 'flot' => 'home#flot'
   get 'morris' => 'home#morris'
   get 'tables' => 'home#tables'

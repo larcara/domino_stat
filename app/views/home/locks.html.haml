@@ -1,0 +1,40 @@
+.row
+  .col-lg-12
+    %h1.page-header Locks
+  / /.col-lg-12
+/ /.row
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+        Domino Locks
+      / /.panel-heading
+      .panel-body
+        .table-responsive
+          %table#lock-table.table.table-striped.table-bordered.table-hover
+            %thead
+              %tr
+                %th Server
+                %th lock Date
+                %th Database Name
+                %th Lock Mode
+                %th TotalLocks
+
+            %tbody
+              -@locks.each do |k,v|
+                -v.each do |l|
+                  %tr
+                    %td=l.domino_server.name
+                    %td=l.date
+                    %td=l.database_name
+                    %td=l.lock_type
+                    %td=v.size
+
+
+
+
+:javascript
+  $(document).ready(function() {
+      $('#lock-table').dataTable();
+  });
+

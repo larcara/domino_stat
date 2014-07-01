@@ -1,8 +1,7 @@
 class CreateDominoMessages < ActiveRecord::Migration
   def change
     create_table :domino_messages do |t|
-      t.date :date
-      t.time :time
+      t.datetime :date
       t.integer :domino_server_id
       t.string :messageid
       t.string :notes_message_id

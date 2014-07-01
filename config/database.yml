@@ -1,3 +1,7 @@
+
+
+
+
 # PostgreSQL. Versions 8.2 and up are supported.
 #
 # Install the pg driver:
@@ -14,18 +18,29 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
+mysql: &mysql
+  adapter: mysql
+  encoding: utf8
+  username: stat_user
+  password: camera.nc
+  host: mailcacti.intra.camera.it
+  port: 3306
+
+
 default: &default
   adapter: postgresql
   encoding: unicode
+  database: domino_stat_development
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
+  username: postgres
+  password: postgres
   pool: 5
 
 development:
-  <<: *default
-  database: domino_stat_development
-  username: postgres
-  password: postgres
+  <<: *mysql
+  database: mail_stats2_development
+
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -57,8 +72,8 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: domino_stat_test
+  <<: *mysql
+  database: mail_stats2_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,7 +95,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: domino_stat_production
-  username: domino_stat
-  password: <%= ENV['DOMINO_STAT_DATABASE_PASSWORD'] %>
+  <<: *mysql
+  database: mail_stats2_development
+  #username: domino_stat
+  #password: <%= ENV['DOMINO_STAT_DATABASE_PASSWORD'] %>

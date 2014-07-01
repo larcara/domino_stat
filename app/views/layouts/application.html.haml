@@ -28,21 +28,25 @@
             %span.icon-bar
           =link_to "#{Rails.application.engine_name}", root_url, class: "navbar-brand"
         / /.navbar-header
-        - if flash[:notice]
-          .col-lg-6
+        .col-lg-6
+          - if flash[:notice]
             .alert.alert-success.alert-dismissable
               %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
               = flash[:notice]
-              = succeed "." do
-                %a.alert-link{:href => "#"} Alert Link
-        - if flash[:alert]
-          .col-lg-6
+          - if flash[:warning]
             .alert.alert-danger.alert-dismissable
               %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
-              = flash[:notice]
-              = succeed "." do
-                %a.alert-link{:href => "#"} Alert Link
+              = flash[:warning]
+
+
         %ul.nav.navbar-top-links.navbar-right
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              %i.fa.fa-wrench.fa-fw
+              %i.fa.fa-caret-down
+            %ul.dropdown-menu.dropdown-messages
+              =render partial: "home/top_menu"
+          / /.dropdown
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               %i.fa.fa-envelope.fa-fw
@@ -82,22 +86,7 @@
                 =link_to  session_destroy_url do
                   %i.fa.fa-sign-out.fa-fw
                   Logout
-        / /.dropdown-user
-        / /.dropdown
-        / /.navbar-top-links
-        .navbar-default.navbar-static-side{:role => "navigation"}
-          .sidebar-collapse
-            %ul#side-menu.nav
-              %li.sidebar-search
-                .input-group.custom-search-form
-                  %input.form-control{:placeholder => "Search...", :type => "text"}
-                    %span.input-group-btn
-                      %button.btn.btn-default{:type => "button"}
-                        %i.fa.fa-search
-              / /input-group
-              =render partial: "home/side_menu"
-      / /.sidebar-collapse
-      / /.navbar-static-side
+
       #page-wrapper
         =yield
       / /#page-wrapper

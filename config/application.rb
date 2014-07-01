@@ -1,13 +1,14 @@
 require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
-require "active_model/railtie"
-require "active_record/railtie"
+require "active_model/railtie" #
+require "active_record/railtie"#
+require "action_view/railtie"  #
 require "action_controller/railtie"
 require "action_mailer/railtie"
-require "action_view/railtie"
+#require "active_resource/railtie"
 require "sprockets/railtie"
-# require "rails/test_unit/railtie"
+require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -26,5 +27,7 @@ module DominoStat
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    #Mongoid.logger.level = Logger::DEBUG
+    #Moped.logger.level = Logger::DEBUG
   end
 end
